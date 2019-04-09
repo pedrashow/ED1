@@ -15,12 +15,18 @@ métodos e/ou atributos e alterar os métodos pop e push já existentes.
  * @author Beto
  */
 
-public class ContaNaPilha extends PilhaGenerica<Integer> {
+public class ContaNaPilha {
 	
-	public ContaNaPilha (int tamanho) {
-		super (tamanho);
+	private PilhaGenerica<Integer> pilhaPar;
+	private PilhaGenerica<Integer> pilhaImpar;
+	private PilhaGenerica<Boolean> proximo;
+	
+	public ContaNaPilha (PilhaGenerica<Integer> p) {
+		
 	}
 	
-	
+	public int contaPares () {
+		
+	}
 	
 }
