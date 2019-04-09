@@ -22,13 +22,13 @@ public class Fila {
 		}
 	}
 	
-	// funcao sugerida
+	// funcao sugerida, que divide o vetor em dois a cada iteração
 	
 	public int getPosicaoValorBinaria(int x) {
 		int inicio = 0;
 		int fim = this.fila.length;
 		
-		while (inicio <= fim) {
+		while (inicio < fim) {
 			int meio = (inicio + fim)/2;
 			if (this.fila[meio] > x)
 				fim = meio - 1;
@@ -50,10 +50,5 @@ public class Fila {
 			}
 		}
 		return Integer.MIN_VALUE;
-	}
-	
-	public static void main(String[] args) {
-		Fila teste = new Fila(4,6,9,11,15,19,22,24);
-		System.out.println(teste.getPosicaoValorBinaria(34));
 	}
 }

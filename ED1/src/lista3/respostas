@@ -1,0 +1,18 @@
+questao 1
+
+
+questao 2
+
+
+
+questao 3
+i) O(n) No pior caso, percorre uma vez o vetor inteiro para garantir que o valor não está lá dentro
+ii) O(n) Equivalente ao caso (i).
+iii) O(log2 n) *o codigo tem alguns erros, mas tratei como se fosse uma busca binária, onde o vetor é dividido em 2 a cada iteração.
+				 Para funcionar, contudo, seria necessário o vetor estar oredenado
+				 
+questao 4
+Classe Fila
+
+questao 5
+classe ContaNaPilha, que herda uma PilhaGenerica<Integer> implementada na lista 1
