@@ -1,0 +1,10 @@
+Os métodos da questão 1 estão na classe PilhaGenerica
+
+As Sequencias que não poderiam acontecer na questão 2 são:
+b, f, g
+
+A classe Parenteses é a resposta da questão 3
+
+A classe inversão letras responde as questões 4 e 6
+
+A classe PilhaInteiraOrdenada responde a questão 5

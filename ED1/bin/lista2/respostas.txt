@@ -1,0 +1,27 @@
+questao 1
+método combinaFilas está na classe Fila
+
+questao 2
+classe FilaUsandoPilha
+
+questao 3
+método converteEmDupla está na classe FilaGenerica e usa a implementaçao da classe FilaDuplaGenerica
+
+questao 4
+classe filaDuplaUsandoPilha
+
+questao 5
+classe AtendimentoLoja
+
+questao 6
+classe PortatilFilaDupla (que implementa uma Fila Generica da classe abstrata Portatil e,
+portanto, das suas subclasses Smartphone e Tablet)
+
+questao 7.
+	É possível implementar a estrutura pedida na questão 6 usando uma fila circular,
+contudo o algoritmo de inserção seria menos eficiente, uma vez que, para
+garantir as regras de negócio, para cada nova inserção, seria necessário remover todos
+os elementos da fila para verificar a ordem e inserí-los novamente.
+
+questao 8.
+classe PortatilFila
