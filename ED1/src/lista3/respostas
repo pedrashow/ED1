@@ -1,6 +1,6 @@
 questao 1
 a) O(N+M)
-b) O
+b) O(N)
 c) O(2n(log n))
 
 questao 2
@@ -17,4 +17,4 @@ questao 4
 Classe Fila
 
 questao 5
-classe ContaNaPilha
+classe PilhaContaPares

@@ -89,8 +89,4 @@ public class PilhaGenerica<T> {
 		return s;
 	}
 
-	public int getTopo() {
-		return this.topo;
-	}
-
 }
