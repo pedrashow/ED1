@@ -1,0 +1,14 @@
+Questao 1)
+A complexidade original é O(n) - é necessário percorrer todos os elementos da lista para contar seu tamanho.
+Implementada na classe listaEncadeadaTamanho a sugestão de melhoria.
+
+Questao 2)
+
+
+Questao 3)
+Criado o construtor na classe lista ordenada;
+
+Questao 4) 
+Criadas as classes ListaGenerica e ListaGenericaOrdenada
+A complexidade para mantê-la ordenada é O(n), uma vez que no pior caso é necessário passar por todos os elementos para inserir no final
+da lista
