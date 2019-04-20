@@ -30,7 +30,7 @@ public class ListaGenericaOrdenada<T extends Comparable<T>> extends ListaGeneric
 		
 		Elo novo = new Elo(elemento);
 		
-		while (!(corrente == null || corrente.dado.compareTo(elemento)<1)) {
+		while (!(corrente == null || corrente.dado.compareTo(elemento)>-1)) {
 			anterior = corrente;
 			corrente = corrente.proximo;
 		}
@@ -41,7 +41,8 @@ public class ListaGenericaOrdenada<T extends Comparable<T>> extends ListaGeneric
 			anterior.proximo = novo;
 		
 		novo.proximo = corrente;
+		
+		this.tamanho++;
 	}
-	
 	
 }

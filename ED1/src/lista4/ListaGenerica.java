@@ -102,7 +102,7 @@ public class ListaGenerica<T> {
 	private void imprimeLista(Elo corrente) {
 		if (corrente == null)
 			return;
-		System.out.println(corrente.dado.toString() + " ");
+		System.out.print(corrente.dado.toString() + " ");
 		imprimeLista(corrente.proximo);
 	}
 	
