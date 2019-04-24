@@ -42,27 +42,21 @@ public class Diretorio {
 		}
 	}
 	
-	/* em construção
-	public String toString() {
-		if (this.raiz == null)
-			return "Diretorio Vazio";
-		return toString(this.raiz,"");
-	}
-	
 
-	private String toString(ItemArmazenado item, String s) {
-		if (item == null)
-			return s;
-		s += item.toString();
-		if (!item.fim()) {
-			ItemArmazenado temp = item.getFilhoEsquerdo();
-			while (temp != null) {
-				this.toString(temp,s);
-				temp = temp.getIrmaoDireito();
-			}
-		}
-	}
-	*/
+	/*Em construção
+	 * public String toString() { if (this.raiz == null) return "Diretorio Vazio";
+	 * return toString(this.raiz,""); }
+	 * 
+	 * 
+	 * private String toString(ItemArmazenado item, String s) { if (item == null)
+	 * return s; s += item.toString(); if (!item.fim()) { return
+	 * toString(item.getFilhoEsquerdo(),s); } return
+	 * maisUm(item.getIrmaoDireito(),s); }
+	 * 
+	 * private String maisUm(ItemArmazenado item, String s) { if (item == null)
+	 * return s; s+= item.toString(); return maisUm(item.getIrmaoDireito(),s); }
+	 */	
+	
 	
 	public static void main(String[] args) {
 		Diretorio diretorio = new Diretorio();
