@@ -3,6 +3,7 @@ A complexidade original é O(n) - é necessário percorrer todos os elementos da li
 Implementada na classe listaEncadeadaTamanho a sugestão de melhoria.
 
 Questao 2)
+classe diretorio que usa a classe abstrata ItemArmazenado e suas subclasses dir e arquivo
 
 
 Questao 3)

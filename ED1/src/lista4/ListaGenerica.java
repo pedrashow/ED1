@@ -96,14 +96,26 @@ public class ListaGenerica<T> {
 			return;
 		}
 		imprimeLista(this.primeiro);
-		System.out.println();
 	}
 	
 	private void imprimeLista(Elo corrente) {
 		if (corrente == null)
 			return;
-		System.out.print(corrente.dado.toString() + " ");
+		System.out.println(corrente.dado.toString() + " ");
 		imprimeLista(corrente.proximo);
+	}
+	
+	public String toString() {
+		if (this.vazia())
+			return "";
+		return toString(this.primeiro,"");
+	}
+	
+	private String toString(Elo corrente, String s) {
+		if (corrente == null)
+			return s;
+		s += corrente.dado.toString();
+		return toString(corrente.proximo,s);
 	}
 	
 	public int tamanho() {
