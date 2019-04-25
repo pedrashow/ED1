@@ -47,9 +47,7 @@ public class Diretorio {
 			}
 		}
 		return retorno;
-		
 	}
-	 
 
 	public static void main(String[] args) {
 		Diretorio diretorio = new Diretorio();

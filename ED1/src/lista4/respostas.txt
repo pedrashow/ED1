@@ -6,7 +6,7 @@ Questao 2)
 classe diretorio que usa a classe abstrata ItemArmazenado e suas subclasses dir e arquivo
 
 Questao 3)
-Criado o construtor na classe lista ordenada;
+Criado o construtor na classe ListaOrdenada;
 
 Questao 4) 
 Criadas as classes ListaGenerica e ListaGenericaOrdenada
