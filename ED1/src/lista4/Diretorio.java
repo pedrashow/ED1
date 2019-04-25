@@ -30,46 +30,29 @@ public class Diretorio {
 		Arquivo beumsl = new Arquivo(drama, "Brilho Eterno de Uma Mente Sem Lembranças");
 		Dir comediasRomanticas = new Dir(filmes, "Comédias Românticas");
 	}
-
-	public static void imprime(ItemArmazenado i) {
-		System.out.print(i.toString());
-		if (!i.fim()) {
-			ItemArmazenado temp = i.getFilhoEsquerdo();
-			while (temp != null) {
-				imprime(temp);
-				temp = temp.getIrmaoDireito();
-			}
-		}
-	}
-
 	
 	public String toString() {
 		if (this.raiz == null)
 			return "Diretorio Vazio";
-		return toString(this.raiz, "");
+		return toString(this.raiz);
 	}
-
-	private String toString(ItemArmazenado item, String s) {
-		s += item.toString();
+	
+	private String toString(ItemArmazenado item) {
+		String retorno= item.toString();
 		if (!item.fim()) {
-			return toString(item.getFilhoEsquerdo(), s);
+			ItemArmazenado temp = item.getFilhoEsquerdo();
+			while (temp != null) {
+				retorno += toString(temp);
+				temp = temp.getIrmaoDireito();
+			}
 		}
-		if (item.getIrmaoDireito() != null)
-			return toString(item.getIrmaoDireito(), s);
-		if (item.getPai() != null) {
-			if (item.getPai().getIrmaoDireito() != null )
-				return toString(item.getPai().getIrmaoDireito(),s);
-			if (item.getPai().getPai() != null && item.getPai().getPai().getIrmaoDireito() != null )
-				return toString(item.getPai().getPai().getIrmaoDireito(),s);
-		}
-			
-		return s;
+		return retorno;
+		
 	}
 	 
 
 	public static void main(String[] args) {
 		Diretorio diretorio = new Diretorio();
 		System.out.println(diretorio);
-		//imprime(diretorio.raiz);
 	}
 }
