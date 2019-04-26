@@ -22,41 +22,18 @@ public class ListaEncadeadaTamanho extends Lista {
 	public int tamanho() {
 		return this.tamanho;
 	}
-	
-	@Override
+
 	public void insere(int novo) {
-		Elo p = new Elo(novo);
-		p.prox = prim;
-		this.prim = p;
-		this.tamanho++; //incrementa o tamanho da lista
+		super.insere(novo);
+		this.tamanho++;
 	}
 	
 	@Override
 	public boolean remove(int elem) {
-		Elo p;
-		Elo ant = null; /* Referência para anterior. */
-
-		for (p = prim; ((p != null) && (p.dado != elem)); p = p.prox)
-			ant = p;
-
-		/* Se p é null, então não encontrou elemento. */
-		if (p == null)
-			return false;
-
-		if (p == prim)
-			prim = prim.prox; /* Remove elemento do início. */
-		else
-			ant.prox = p.prox; /* Remove elemento do meio. */
-
-		/*
-		 * Remove a última referência para o elo a ser removido. Dessa forma, o Garbage
-		 * Collector irá liberar essa memória.
-		 */
-		p = null;
-		
-		this.tamanho--; //decrementa o tamanho da lista
-
-		return true;
+		boolean retorno = super.remove(elem);
+		if (retorno)
+			this.tamanho--; //decrementa o tamanho da lista
+		return retorno;
 	}
 	
 	
