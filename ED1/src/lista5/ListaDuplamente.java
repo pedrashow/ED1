@@ -5,6 +5,8 @@ public class ListaDuplamente
 	/* Referência para primeiro elemento */
 	protected Elo prim;
 	
+	protected int tamanho;
+	
 	protected class Elo
 	{
 		protected int dado;
@@ -35,6 +37,7 @@ public class ListaDuplamente
 	public ListaDuplamente()
 	{
 		prim = null;
+		tamanho = 0;
 	}
 	
 	/* Testa se a lista está vazia. */
@@ -58,6 +61,8 @@ public class ListaDuplamente
 			prim.ant = p;
 		
 		prim = p;
+		
+		this.tamanho++;
 	}
 	
 	/* Método auxiliar para busca. */
@@ -90,6 +95,8 @@ public class ListaDuplamente
 			p.prox.ant = p.ant;
 
 		p = null;
+		
+		this.tamanho--;
 
 		return true;
 	}
@@ -112,30 +119,18 @@ public class ListaDuplamente
 	public void trocaElos(int indiceElo1, int indiceElo2) {
 		if (indiceElo1 == indiceElo2)
 			return;
-		if (indiceElo1 > indiceElo2) { //garantir que o elo 1 é o menor
-			trocaElos(indiceElo2,indiceElo1);
-			return;
-		}
-		Elo elo1 = buscaPorIndice(indiceElo1);
-		Elo elo2 = buscaPorIndice(indiceElo2);
-		Elo ant1 = elo1.ant;
-		Elo ant2 = elo2.ant;
-		Elo post1 = elo1.prox;
-		Elo post2 = elo2.prox;
 		
-		if (ant1 != null)
-			ant1.prox = elo2;
-		else
-			prim = elo2;
-		post1.ant = elo2;
-		elo2.ant = ant1;
-		elo2.prox = post1;
+		int temp;
 		
-		ant2.prox = elo1;
-		if (post2 != null) 
-			post2.ant = elo1;
-		elo1.ant = ant2;
-		elo1.prox = post2;
+		Elo um = buscaPorIndice(indiceElo1);
+		
+		Elo dois = buscaPorIndice(indiceElo2);
+		
+		temp = um.dado;
+		um.dado = dois.dado;
+		dois.dado = temp;
+		
+			
 	}
 	
 	public void imprime() {
@@ -173,7 +168,7 @@ public class ListaDuplamente
 		for (int i = 10; i>=0; i--)
 			lista.insere(i);
 		lista.imprime();
-		lista.trocaElos(5, 0);
+		lista.trocaElos(0, 1);
 		lista.imprime();
 	}
 

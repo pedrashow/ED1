@@ -108,4 +108,8 @@ public class ListaCircularDuplamente extends ListaDuplamente
 			prim.ant  = q;
 		}
 	}
+	
+	public void ordena() {
+		
+	}
 }

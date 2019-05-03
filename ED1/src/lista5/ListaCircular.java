@@ -114,18 +114,47 @@ public class ListaCircular extends Lista {
 	}
 
 	public void mergeListaCircular(ListaCircular lista1, ListaCircular lista2) {
+		Elo l1 = lista1.prim;
+		Elo l2 = lista2.prim;
+		boolean fimLista1 = false, fimLista2 = false;
+		if (l1 == null)
+			fimLista1 = true;
+		if (l2 == null)
+			fimLista2 = true;
+		do {
+			if (!fimLista1) {
+				this.insere(l1.dado);
+				l1 = l1.prox;
+			}
+			if (!fimLista2) {
+				this.insere(l2.dado);
+				l2 = l2.prox;
+			}
+			if (l1 == lista1.prim)
+				fimLista1 = true;
+			if (l2 == lista2.prim)
+				fimLista2 = true;
+			
+		} while (!(fimLista1 && fimLista2));
 		
+
 	}
 	
 	public static void main(String[] args) {
 		Lista teste = new Lista();
-		for (int i = 10; i>0; i--)
+		for (int i = 10; i>0; i -= 2)
 			teste.insere(i);
 		ListaCircular testeCircular = new ListaCircular(teste);
-		
+		ListaCircular teste2 = new ListaCircular();
+		for (int i = 1; i<13; i+=2)
+			teste2.insere(i);
 		testeCircular.imprime();
 		testeCircular.inverteLista();
 		testeCircular.imprime();
+		teste2.imprime();
+		ListaCircular concatenada = new ListaCircular();
+		concatenada.mergeListaCircular(testeCircular, teste2);
+		concatenada.imprime();
 	}
 
 
