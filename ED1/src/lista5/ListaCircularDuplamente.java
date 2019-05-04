@@ -87,7 +87,7 @@ public class ListaCircularDuplamente extends ListaDuplamente {
 		Elo corrente = prim;
 		Elo proximo = prim.prox;
 		
-		if (corrente == null || proximo == null)
+		if (corrente == null || proximo == prim)
 			return;
 		
 		int temp;
