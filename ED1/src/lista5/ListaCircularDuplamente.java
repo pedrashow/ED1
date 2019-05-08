@@ -122,10 +122,9 @@ public class ListaCircularDuplamente extends ListaDuplamente {
 	public static void main(String[] args) {
 		ListaCircularDuplamente teste = new ListaCircularDuplamente();
 		teste.insere(4);
-		teste.insere(2);
-		teste.insere(19);
-		teste.insere(23);
-		teste.insere(7);
+		/*
+		 * teste.insere(2); teste.insere(19); teste.insere(23); teste.insere(7);
+		 */
 		teste.imprime();
 		teste.ordena();
 		teste.imprime();
