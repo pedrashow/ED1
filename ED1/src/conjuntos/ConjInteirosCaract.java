@@ -1,5 +1,14 @@
 package conjuntos;
 
+/**
+ * 
+ * Classe para representar conjunto de inteiros usando um vetor caracteristico
+ * Cada indice armazena um booleano que informa se este numero(indice) pertence ao conjunto
+ * 
+ * @author Beto
+ *
+ */
+
 public class ConjInteirosCaract {
 	
 	private boolean[] vetor;
@@ -11,7 +20,7 @@ public class ConjInteirosCaract {
 		qtdElementos = 0;
 	}
 	
-	ConjInteirosCaract(int... numeros) { //inclui todos os elementos passados por parametro no conjunto
+	ConjInteirosCaract(int... numeros) { //inclui no conjunto todos os elementos passados por parametro
 		this();
 		for (int y:numeros) {
 			this.adicionarElemento(y);
@@ -58,7 +67,7 @@ public class ConjInteirosCaract {
 		if (this.vazio())
 			return Integer.MIN_VALUE;
 		boolean x = false;
-		int i = this.vetor.length+1;
+		int i = this.vetor.length;
 		while (!x) {
 			i--;
 			x = this.vetor[i];
@@ -83,8 +92,8 @@ public class ConjInteirosCaract {
 			System.err.println("Conjuntos com especificacoes diferentes");
 			return false;
 		}
-		for (int i = 0; i < this.vetor.length; i++) {
-			if ( !this.vetor[i] || c.vetor[i] )
+		for (int i = 0; i < this.vetor.length; i++) {			
+			if (!c.vetor[i] && this.vetor[i])
 				return false;
 		}
 		return true;
@@ -131,11 +140,20 @@ public class ConjInteirosCaract {
 		ConjInteirosCaract b = new ConjInteirosCaract(1, 6, 9, 10, 2);
 		ConjInteirosCaract c = uniao(a,b);
 		ConjInteirosCaract d = intersecao(a,b);
-		System.out.println("A " + a);
-		System.out.println("B " + b);
-		System.out.println("C " + c);
-		System.out.println("D " + d);
-		System.out.println(d.ehSubconjunto(a));
-		}
+		ConjInteirosCaract e = new ConjInteirosCaract();
+		System.out.println("A (" + a.cardinalidade() + " elementos): " + a);
+		System.out.println("B (" + b.cardinalidade() + " elementos): " + b);
+		System.out.println("C (" + c.cardinalidade() + " elementos): " + c);
+		System.out.println("D (" + d.cardinalidade() + " elementos): " + d);
+		System.out.println("E (" + e.cardinalidade() + " elementos): " + e);
+		System.out.println(a.ehSubconjunto(a));
+		System.out.println(a.ehSubconjunto(c));
+		System.out.println(a.ehSubconjuntoProprio(a));
+		System.out.println(a.maiorELemento());
+		System.out.println(b.maiorELemento());
+		System.out.println(c.menorELemento());
+		System.out.println(d.menorELemento());
+		System.out.println(e.maiorELemento());
+	}
 	
 }
