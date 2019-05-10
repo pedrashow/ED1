@@ -1,4 +1,4 @@
-package conjuntos;
+package conjunto;
 
 /**
  * 

@@ -1,0 +1,18 @@
+Questao1)
+construtores na classe ListaCircular
+
+
+Questão 2)
+metodo "inverteLista" na classe ListaCircular
+
+Questao 3)
+metodo "trocaElos" que usa o metodo "buscaPorIndice" na classe ListaDuplamente
+
+Questao 4)
+metodo ordena na classe ListaCircularDuplamente
+
+Questao 5)
+metodo "igual" na classe ListaDuplamente
+
+Questao 6)
+metodo mergeListaCircular na classe ListaCircular
