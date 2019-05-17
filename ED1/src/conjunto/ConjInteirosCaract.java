@@ -13,11 +13,15 @@ public class ConjInteirosCaract {
 	
 	private boolean[] vetor;
 	private int qtdElementos;
+	private int menor;
+	private int maior;
 	
 	ConjInteirosCaract() {
 		int TAMANHO = 100; //alterar para o tamanho desejado
 		vetor = new boolean[TAMANHO];
 		qtdElementos = 0;
+		menor = Integer.MAX_VALUE;
+		maior = Integer.MIN_VALUE;
 	}
 	
 	ConjInteirosCaract(int... numeros) { //inclui no conjunto todos os elementos passados por parametro
@@ -32,6 +36,10 @@ public class ConjInteirosCaract {
 			throw new IllegalArgumentException("Elemento fora do escopo");
 		this.vetor[x] = true;
 		this.qtdElementos++;
+		if (x< menor)
+			menor = x;
+		if (x > maior)
+			maior = x;
 	}
 	
 	public void removerElemento(int x) {
@@ -64,27 +72,19 @@ public class ConjInteirosCaract {
 	}
 	
 	public int maiorELemento() {
-		if (this.vazio())
-			return Integer.MIN_VALUE;
-		boolean x = false;
-		int i = this.vetor.length;
-		while (!x) {
-			i--;
-			x = this.vetor[i];
-		}
-		return i;
+		/*
+		 * if (this.vazio()) return Integer.MIN_VALUE; boolean x = false; int i =
+		 * this.vetor.length; while (!x) { i--; x = this.vetor[i]; } return i;
+		 */
+		return this.maior;
 	}
 	
 	public int menorELemento() {
-		if (this.vazio())
-			return Integer.MAX_VALUE;
-		boolean x = false;
-		int i = -1;
-		while (!x) {
-			i++;
-			x = this.vetor[i];
-		}
-		return i;
+		/*
+		 * if (this.vazio()) return Integer.MAX_VALUE; boolean x = false; int i = -1;
+		 * while (!x) { i++; x = this.vetor[i]; } return i;
+		 */
+		return this.menor;
 	}
 	
 	public boolean ehSubconjunto(ConjInteirosCaract c) {

@@ -1,0 +1,11 @@
+respostas
+1) Atributos criados e metodos modificados na class ConjInteirosCaract
+2) metodo criado na classe ConjGenerico. A complexidade do algoritmo é O(n) onde n é o tamanho do conj. universo, pois no pior caso
+será necessário percorrer todo o conjunto universo para ter o complemento.
+3) metodo criado na classe COnjGenerico. A complexidade do algoritmo é O(n) onde n é o tamanho do conj. que chama a função, pois no
+ pior caso será necessário percorrer todo o conjunto que chama a função para comparar se o elemento dele pertence ao outro conjunto
+4) metodo criado na classe ConjGenerico. A complexidade do algoritmo é O(n) onde n é o tamanho do conj. que chama a função, pois no
+ pior caso será necessário percorrer todo o conjunto que chama a função para ter a diferença para o outro conjunto.
+5) metodo criado na classe ConjGenerico. A complexidade do algoritmo é O(n) onde n é o tamanho do menor conjunto entre o que chama
+a função e o que é passado como parâmetro, pois o método retorna quando um dos conjuntos chega ao fim.
+6)
