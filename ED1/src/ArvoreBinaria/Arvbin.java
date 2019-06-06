@@ -241,7 +241,7 @@ public class Arvbin<T extends Comparable<T>> {
 			esq.imprimeEmOrdem();
 		System.out.print(val + " ");
 		if (dir != null)
-			dir.imprimePosOrdem();
+			dir.imprimeEmOrdem();
 	}
 
 	public Arvbin<T> criaNovaArvore(T valor) {

@@ -1,0 +1,10 @@
+1) O local de inserção depende do algoritmo de busca usado, se é Pre-Ordem, Pos-Ordem ou ordem simétrica.
+O ideal é que os mais frequentemente usados sejam buscados mais rapidamente.
+
+2) 
+
+3)
+
+4)
+
+5) Todos os metodos são O(n) pois é necessário acessar todos os elementos para imprimí-los
