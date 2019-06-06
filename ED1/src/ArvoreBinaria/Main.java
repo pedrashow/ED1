@@ -33,5 +33,10 @@ public class Main
 				}
 				a4.mostra();
 				System.out.println();
+				a4.imprimePreOrdem();
+				System.out.println();
+				a4.imprimePosOrdem();
+				System.out.println();
+				a4.imprimeEmOrdem();
 	}
 }
