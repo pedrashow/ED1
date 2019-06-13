@@ -1,4 +1,4 @@
-package ArvoreBinaria;
+package arvore;
 
 public class Arvbin<T extends Comparable<T>> {
 	private T val; /* Valor armazenado na raiz. */
@@ -7,8 +7,8 @@ public class Arvbin<T extends Comparable<T>> {
 	private Arvbin<T> esq, dir;
 
 	/*
-	 * Construtor de árvore sem sub-ávores (dir = esq = null). É fornecido apenas o
-	 * valor da raiz.
+	 * Construtor de árvore sem sub-ávores (dir = esq = null). É fornecido
+	 * apenas o valor da raiz.
 	 */
 	public Arvbin(T valor) {
 		val = valor;
@@ -146,8 +146,8 @@ public class Arvbin<T extends Comparable<T>> {
 	}
 
 	/*
-	 * Calcula e retorna o diâmetro da árvore, isto é, o número de nós contido no
-	 * maior caminho de um nó para outro nó da árvore.
+	 * Calcula e retorna o diâmetro da árvore, isto é, o número de nós contido
+	 * no maior caminho de um nó para outro nó da árvore.
 	 */
 	public int calculaDiametro() {
 		/* Caso base, quando é uma folha. */
@@ -167,9 +167,9 @@ public class Arvbin<T extends Comparable<T>> {
 		int maxDistanciaNo = alturaEsq + alturaDir + 1;
 
 		/*
-		 * Nesse ponto, temos a maior distância entre dois nós da árvore que passa pelo
-		 * nó corrente (this). Agora devemos calcular esse valor para as sub-árvores
-		 * esquerda e direita, comparando depois.
+		 * Nesse ponto, temos a maior distância entre dois nós da árvore que
+		 * passa pelo nó corrente (this). Agora devemos calcular esse valor para
+		 * as sub-árvores esquerda e direita, comparando depois.
 		 */
 
 		int maxDistanciaEsq = 0, maxDistanciaDir = 0;
@@ -189,66 +189,92 @@ public class Arvbin<T extends Comparable<T>> {
 	}
 
 	/*
-	 * Verifica se um valor está na árvore. Se estiver, retorna um ponteiro para o o
-	 * nó que tem esse valor. Caso contrário, retorna null.
+	 * Verifica se um valor está na árvore. Se estiver, retorna um ponteiro para
+	 * o o nó que tem esse valor. Caso contrário, retorna null.
 	 */
-	public Arvbin<T> busca(T valor) {
+	public Arvbin<T> busca(T valor)
+	{
 		Arvbin<T> ret;
 
 		/* Se é igual ao valor armazenado, não precisa procurar mais. O nó é a raiz. */
-		if (valor.compareTo(val) == 0) {
+		if (valor.compareTo(val) == 0)
+		{
 			return this;
 		}
 
 		/* Senão, começa procurando na sub-árvore esquerda. */
-		if (esq != null) {
+		if (esq != null){
 			ret = esq.busca(valor);
 			if (ret != null)
 				return ret;
 		}
 
-		/*
-		 * Se chega a esse ponto, estará na árvore se, e somente se, estiver na
-		 * sub-árvore direita
-		 */
-		if (dir != null)
+		/* Se chega a esse ponto, estará na árvore se, e somente se, 
+	     estiver na sub-árvore direita */
+		if (dir != null) 
 			return dir.busca(valor);
 		return null;
 	}
 
-	public void delete(T valor) {
-
-	}
-
-	public void imprimePreOrdem() {
-		System.out.print(val + " ");
+	public int contaNosIntervalo(T min, T max) {
+		
+		if (esq == null && dir == null) {
+			if (val.compareTo(min) >= 0 && val.compareTo(max) <= 0)
+				return 1;
+			return 0;
+		}
+		
+		int numNosEsq =0, numNosDir = 0;
+		
 		if (esq != null)
-			esq.imprimePreOrdem();
+			numNosEsq = esq.contaNosIntervalo(min, max);
+
 		if (dir != null)
-			dir.imprimePreOrdem();
-	}
-
-	public void imprimePosOrdem() {
-		if (esq != null)
-			esq.imprimePosOrdem();
-		if (dir != null)
-			dir.imprimePosOrdem();
-		System.out.print(val + " ");
-	}
-
-	public void imprimeEmOrdem() {
-		if (esq != null)
-			esq.imprimeEmOrdem();
-		System.out.print(val + " ");
-		if (dir != null)
-			dir.imprimeEmOrdem();
-	}
-
-	public Arvbin<T> criaNovaArvore(T valor) {
-		return busca(valor);
-	}
-
-	public void tornaRaiz(T valor) {
+			numNosDir = dir.contaNosIntervalo(min, max);
+		
+		if (val.compareTo(min) >= 0 && val.compareTo(max) <= 0)
+			return 1 + numNosEsq + numNosDir;
+		
+		return numNosEsq + numNosDir;
 
 	}
+	
+	public boolean eIgual(Arvbin<T> outra) {
+		
+		if (esq == null && dir == null && outra.esq == null && outra.dir == null)
+			return (val.compareTo(outra.val) == 0);
+		
+		boolean testeEsq = false, testeDir = false;
+		
+		if (esq != null && outra.esq != null)
+			testeEsq = esq.eIgual(outra.esq);
+		else if (esq == null && outra.esq == null)
+			testeEsq = true;
+		
+		if (dir != null && outra.dir != null)
+			testeDir = dir.eIgual(outra.dir);
+		else if (dir == null && outra.dir == null)
+			testeDir = true;
+		
+		return (val.compareTo(outra.val) == 0 && testeEsq && testeDir);	
+	}
+	
+	public static boolean ArvoreSoma(Arvbin<Integer> arvore) {
+		
+		if (arvore.esq == null && arvore.dir == null)
+			return true;
+				
+		boolean testeEsq = false, testeDir = false;
+		
+		if (arvore.esq == null && arvore.dir != null)
+			testeDir = (arvore.val == arvore.dir.val && ArvoreSoma(arvore.dir));
+		
+		if (arvore.esq != null && arvore.dir == null)
+			testeEsq = (arvore.val == arvore.esq.val && ArvoreSoma(arvore.esq));
+		
+		return (arvore.esq.val + arvore.dir.val == arvore.val && testeDir && testeEsq);
+		
+	}
+	
+	
 }
