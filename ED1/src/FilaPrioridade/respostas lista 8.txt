@@ -1,0 +1,20 @@
+questao 1
+R R P O T Y I I U Q E U
+complexidade : N/A
+
+questao2
+O(log²n) pois é necessário checar se é completa e depois importar os valores
+metodo boolean completa() na classe Arvbin
+metodo importaArvoreBinaria(Arvbin) na classe BinMaxHeap
+
+
+questao3
+
+
+questao4
+classes:
+BinMaxHeapGenerica<SistemaOperacional>
+SistemaOperacional
+Aplicacao, que é um SistemaOperacional
+implementadas na classe main
+complexidade: N/A

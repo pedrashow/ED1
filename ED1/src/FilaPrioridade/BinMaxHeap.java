@@ -1,5 +1,7 @@
 package FilaPrioridade;
 
+import ArvoreBinaria.Arvbin;
+
 public class BinMaxHeap
 {
 	private int n;               /* Numero de elementos no heap. */   
@@ -26,6 +28,12 @@ public class BinMaxHeap
 
 		constroiHeap();
 	}
+	
+	public BinMaxHeap(BinMinHeap bmh) {
+	
+		
+	}
+	
 
 	/* Testa se a fila de prioridade está logicamente vazia.
 	   Retorna true se vazia, false, caso contrário. */
@@ -185,4 +193,22 @@ public class BinMaxHeap
 			refaz(raiz);
 		}
 	}
+	
+	public static BinMaxHeap importaArvoreBinaria(Arvbin<Integer> arvore) {
+		if (!arvore.completa())
+			return null;
+		BinMaxHeap retorno = new BinMaxHeap(arvore.contaNos());
+		retorno.importaArvore(arvore);
+		return retorno;
+	}
+	
+	private void importaArvore(Arvbin<Integer> arvore) {
+		this.insere(arvore.retornaVal());
+		if (arvore.retornaEsq() != null)
+			this.importaArvore(arvore.retornaEsq());
+		if (arvore.retornaDir() != null)
+			this.importaArvore(arvore.retornaDir());
+	}
+	
+	
 }

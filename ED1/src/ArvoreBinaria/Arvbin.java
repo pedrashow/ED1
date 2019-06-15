@@ -401,4 +401,19 @@ public class Arvbin<T extends Comparable<T>> {
 		
 		return arv.val + somaDir + somaEsq;
 	}
+	
+	public boolean completa() {
+		int numNos = this.contaNos();
+		return completa(numNos, 1);
+	}
+	
+	private boolean completa(int numNos, int indice) {
+		if (esq == null && dir == null)
+			return true;
+		
+		if (indice >= numNos)
+			return false;
+		
+		return (esq.completa(numNos, 2* indice) && dir.completa(numNos, 2*indice + 1));
+	}
 }
