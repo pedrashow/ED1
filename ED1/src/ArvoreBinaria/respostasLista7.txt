@@ -1,10 +1,10 @@
 1) O local de inserção depende do algoritmo de busca usado, se é Pre-Ordem, Pos-Ordem ou ordem simétrica.
 O ideal é que os mais frequentemente usados sejam buscados mais rapidamente.
 
-2) 
+2)  O(n) - no pior caso teremos que pesquisar todos os nós para ter certeza que o valor não está lá ou que foi excluído devidamente 
 
-3)
+3) O(n) - No pior caso o valor não está na arvore. Se tivessemos certeza de que o valor está na arvore, seria O(log²n)
 
-4)
+4) O(n) - no por caso teremos que pesquisar todos os nós até achar a origem da nova arvore
 
 5) Todos os metodos são O(n) pois é necessário acessar todos os elementos para imprimí-los

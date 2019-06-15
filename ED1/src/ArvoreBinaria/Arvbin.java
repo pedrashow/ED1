@@ -217,7 +217,66 @@ public class Arvbin<T extends Comparable<T>> {
 	}
 
 	public void delete(T valor) {
-
+		
+		
+		//se chegar em uma folha e não achar o valor, retorno
+		
+		if (esq == null && dir == null && val.compareTo(valor) != 0)
+			return;
+		
+		
+		//se o nó do valor for uma folha eu apago a referencia a ela
+		
+		if (esq != null && esq.val.compareTo(valor) == 0 && esq.esq == null && esq.dir == null) {
+			esq = null;
+			return;
+		}
+			
+		if (dir != null && dir.val.compareTo(valor) == 0 && dir.esq == null && dir.dir == null) {
+			dir = null;
+			return;
+		}
+		
+		//se o nó do valor tiver apenas um filho, seu pai apontará para seu filho
+		
+		if (esq != null && esq.esq != null && esq.dir == null && esq.val.compareTo(valor) == 0) {
+			esq = esq.esq;
+			return;
+		}
+		
+		if (esq != null && esq.esq == null && esq.dir != null && esq.val.compareTo(valor) == 0) {
+			esq = esq.dir;
+			return;
+		}
+		
+		if (dir != null && dir.esq != null && dir.dir == null && dir.val.compareTo(valor) == 0) {
+			dir = dir.esq;
+			return;
+		}
+		
+		if (dir != null && dir.esq == null && dir.dir != null && dir.val.compareTo(valor) == 0) {
+			dir = dir.dir;
+			return;
+		}
+		
+		//se o nó tiver dois filhos, troco o valor com um filho até que se chegue em um caso base
+		
+		if (val.compareTo(valor) == 0 && dir != null && esq != null) {
+			T aux = val;
+			val = dir.val;
+			dir.val = aux;
+			dir.delete(valor);
+		}
+		
+		// caso recursivo para esquerda se o valor é diferente
+		
+		if (val.compareTo(valor) != 0 && esq != null)
+			esq.delete(valor);
+		
+		// caso recursivo para a direita se o valor é diferente
+		
+		if (val.compareTo(valor) != 0 && dir != null)
+			dir.delete(valor);
 	}
 
 	public void imprimePreOrdem() {
@@ -247,8 +306,99 @@ public class Arvbin<T extends Comparable<T>> {
 	public Arvbin<T> criaNovaArvore(T valor) {
 		return busca(valor);
 	}
-
+	
 	public void tornaRaiz(T valor) {
+		
+		for (int i = 0; i < this.calculaAltura(); i++) {
+			
+			
+			if (esq != null && esq.val.compareTo(valor) == 0) {
+				T aux = esq.val;
+				esq.val = val;
+				val = aux;
+				return;
+			} else if (esq != null) {
+				esq.tornaRaiz(valor);
+			}
+			
+			if (dir != null && dir.val.compareTo(valor) == 0) {
+				T aux = dir.val;
+				dir.val = val;
+				val = aux;
+				return;
+			} else if (dir != null) {
+				dir.tornaRaiz(valor);
+			}
+		}
+	}
+	
+	public int contaNosIntervalo(T min, T max) {
+		
+		if (esq == null && dir == null) {
+			if (val.compareTo(min) >= 0 && val.compareTo(max) <= 0)
+				return 1;
+			return 0;
+		}
+		
+		int numNosEsq =0, numNosDir = 0;
+		
+		if (esq != null)
+			numNosEsq = esq.contaNosIntervalo(min, max);
 
+		if (dir != null)
+			numNosDir = dir.contaNosIntervalo(min, max);
+		
+		if (val.compareTo(min) >= 0 && val.compareTo(max) <= 0)
+			return 1 + numNosEsq + numNosDir;
+		
+		return numNosEsq + numNosDir;
+
+	}
+	
+	public boolean eIgual(Arvbin<T> outra) {
+		
+		if (esq == null && dir == null && outra.esq == null && outra.dir == null)
+			return (val.compareTo(outra.val) == 0); 
+		
+		boolean testeEsq = false, testeDir = false;
+		
+		if (esq == null && outra.esq == null && dir != null && outra.dir != null)
+			testeEsq = dir.eIgual(outra.dir);
+		
+		if (dir == null && outra.dir == null && esq != null && outra.esq != null)
+			testeDir = esq.eIgual(outra.esq);
+		
+		return (val.compareTo(outra.val) == 0 && testeEsq && testeDir);
+	}
+	
+	public static boolean arvoreSoma(Arvbin<Integer> arvore) {
+		
+		if (arvore.esq == null && arvore.dir == null)
+			return true;
+				
+		boolean testeEsq = false, testeDir = false;
+		
+		if (arvore.esq != null && arvore.dir == null)
+			testeEsq = arvore.val == soma(arvore.esq) && arvoreSoma(arvore.esq);
+		
+		if (arvore.dir != null && arvore.esq == null)
+			testeDir = arvore.val == soma(arvore.dir) && arvoreSoma(arvore.dir);
+		
+		return arvore.val == soma(arvore.dir) + soma(arvore.esq) && testeEsq && testeDir;
+		
+	}
+	
+	public static int soma(Arvbin<Integer> arv) {
+		int somaDir = 0, somaEsq = 0;
+		if (arv.esq == null && arv.dir == null)
+			return arv.val;
+		
+		if (arv.dir != null)
+			somaDir = soma(arv.dir);
+		
+		if (arv.esq != null)
+			somaEsq = soma(arv.esq);
+		
+		return arv.val + somaDir + somaEsq;
 	}
 }
