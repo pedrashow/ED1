@@ -30,8 +30,18 @@ public class BinMaxHeap
 	}
 	
 	public BinMaxHeap(BinMinHeap bmh) {
-	
+		if (bmh.vazia())
+			throw new IllegalArgumentException("Heap vazia");
 		
+		this.importaMinHeap(bmh);
+	}
+	
+	private void importaMinHeap(BinMinHeap bmh) {
+		int i = bmh.removeMin();
+		if (!bmh.vazia())
+			importaMinHeap(bmh);
+		this.insere(i);
+		return;
 	}
 	
 

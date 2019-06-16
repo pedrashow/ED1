@@ -26,6 +26,22 @@ public class BinMinHeap
 
 		constroiHeap();
 	}
+	
+	public BinMinHeap(BinMaxHeap bmh) {
+		if (bmh.vazia())
+			throw new IllegalArgumentException("Heap vazia");
+		
+		this.importaMaxHeap(bmh);
+	}
+	
+	private void importaMaxHeap(BinMaxHeap bmh) {
+		int i = bmh.removeMin();
+		if (!bmh.vazia())
+			importaMaxHeap(bmh);
+		this.insere(i);
+		return;
+	}
+	
 
 	/* Testa se a fila de prioridade está logicamente vazia.
 	   Retorna true se vazia, false, caso contrário. */
