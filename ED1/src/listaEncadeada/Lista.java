@@ -143,4 +143,42 @@ public class Lista {
 
 		return tam;
 	}
+	
+	public void rotaciona(int k) {
+		
+		if (prim == null) {
+			System.out.println("Lista vazia");
+			return;
+		}
+		
+		Elo ant = null, corr = prim; int i = 0;
+		
+		while (!(i==k || corr.prox == null)) {
+			i++;
+			ant = corr;
+			corr = corr.prox;
+		}
+		
+		if (i==k) {
+			if (ant == null) return;
+			Elo primOriginal = prim;
+			ant.prox = null;
+			prim = corr;
+			while (corr.prox != null) {
+				corr = corr.prox;
+			}
+			corr.prox = primOriginal;
+			return;
+		}
+		System.out.println("Indice nao existe");
+	}
+	
+	public static void main(String[] args) {
+		ListaOrdenada l1 = new ListaOrdenada();
+		for (int i = 10; i <70; i+=10)
+			l1.insere(i);
+		
+		l1.rotaciona(0);
+		l1.imprime();
+	}
 }

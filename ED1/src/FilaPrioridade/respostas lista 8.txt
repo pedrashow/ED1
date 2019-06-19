@@ -9,6 +9,7 @@ metodo importaArvoreBinaria(Arvbin) na classe BinMaxHeap
 
 
 questao3
+construtores nas classes BinMinHeap e BinMaxHeap
 O(nlogn) pois eu tenho que retirar todos os n elementos de uma heap e empilhando as chamadas de retirada,
 é possível inserir na outra heap na ordem certa em O(n).
 
