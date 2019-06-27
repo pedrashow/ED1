@@ -143,7 +143,7 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     /**
      * Essa árvore binária de busca contém a chave fornecida?
      *
-     * @param  chave a chave
+     * @param  chave a chave fornecida
      * @return {@code true} se a árvore contém a chave {@code chave} e
      *         {@code false} caso contrário
      * @throws IllegalArgumentException se {@code key} é {@code null}
@@ -280,7 +280,7 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
     }
     
     /**
-     * Remove o nó cuja chave seja igual a {@code chave} fornecida.
+     * Remove o nó cuja chave seja igual à {@code chave} fornecida.
      * 
      * @param chave a chave fornecida
      * @return {@code true} se foi possível remover o nó de chave {@code chave} e
@@ -326,11 +326,106 @@ public class ArvBinBusca<Chave extends Comparable<Chave>, Valor>
 
     		/* A subárvore esquerda se mantém a mesma. */
     		x.esq = t.esq;
-    	} 
+    	}
 
     	return x;
+    }
+    
+    
+    /**
+     * Retorna a maior chave na árvore que é menor ou igual à {@code chave} fornecida.
+     *
+     * @param  chave a chave fornecida
+     * @return a maior chave na árvore menor ou igual à {@code chave}
+     * @throws NoSuchElementException se a árvore está vazia
+     * @throws IllegalArgumentException se a {@code chave} é {@code null}
+     */
+    public Chave piso(Chave chave)
+    {
+        if (chave == null)
+        	throw new IllegalArgumentException("A chave fornecida é null!");
+        
+        if (vazia()) 
+        	throw new NoSuchElementException("A árvore está vazia!");
+        
+        No x = piso(raiz, chave);
+        
+        if (x == null)
+        	return null;
+        else
+        	return x.chave;
     } 
 
+    private No piso(No x, Chave chave)
+    {
+        if (x == null)
+        	return null;
+        
+        int cmp = chave.compareTo(x.chave);
+        
+        if (cmp == 0)
+        	return x;
+        
+        if (cmp <  0)
+        	return piso(x.esq, chave);
+        
+        No t = piso(x.dir, chave);
+
+        if (t != null) 
+        	return t;
+        else
+        	return x; 
+    }
+
+    
+    /**
+     * Retorna a menor chave na árvore que é maior ou igual à {@code chave} fornecida.
+     *
+     * @param  chave a chave fornecida
+     * @return a menor chave na árvore maior ou igual à {@code chave}
+     * @throws NoSuchElementException se a árvore está vazia
+     * @throws IllegalArgumentException se a {@code chave} é {@code null}
+     */
+    public Chave topo(Chave chave)
+    {
+        if (chave == null) 
+        	throw new IllegalArgumentException("A chave fornecida é null!");
+
+        if (vazia())
+        	throw new NoSuchElementException("A árvore está vazia!");
+        
+        No x = topo(raiz, chave);
+        
+        if (x == null)
+        	return null;
+        else 
+        	return x.chave;
+    }
+
+    private No topo(No x, Chave chave)
+    {
+        if (x == null)
+        	return null;
+        
+        int cmp = chave.compareTo(x.chave);
+        
+        if (cmp == 0)
+        	return x;
+        
+        if (cmp < 0)
+        { 
+            No t = topo(x.esq, chave);
+            
+            if (t != null)
+            	return t;
+            else
+            	return x; 
+        } 
+        
+        return topo(x.dir, chave); 
+    } 
+    
+    
     /**
      * Retorna o número de nós na árvore cujas chaves são estritamente menores do que {@code chave}.
      *

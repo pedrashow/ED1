@@ -77,7 +77,7 @@ public class ListaOrdenada extends Lista
 		ListaOrdenada l1 = new ListaOrdenada();
 		ListaOrdenada l2 = new ListaOrdenada();
 		l1.insere(2);l1.insere(6);l1.insere(10);l1.insere(12);
-		l2.insere(0);l2.insere(1);l2.insere(5);l2.insere(8);l2.insere(9);l2.insere(15);
+		l2.insere(0);l2.insere(1);l2.insere(99);l2.insere(8);l2.insere(9);l2.insere(15);
 		l1.imprime();
 		l2.imprime();
 		l1.merge(l2);
